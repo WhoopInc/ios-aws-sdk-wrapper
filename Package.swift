@@ -16,7 +16,6 @@ let package = Package(
         ),
     ],
     dependencies: [
-        // Updated to latest version for Swift 6 compatibility
         .package(url: "https://github.com/awslabs/aws-sdk-swift", from: "1.6.0")
     ],
     targets: [
