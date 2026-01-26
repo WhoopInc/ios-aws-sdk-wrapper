@@ -43,4 +43,3 @@ The package exposes a public protocol `WhoopCognitoClientProtocol` with custom t
 - **Type Abstraction**: All AWS SDK types are encapsulated internally
 - **Custom HTTP Client**: Support for injecting custom `URLSession` instances
 - **Error Handling**: Proper error propagation from AWS SDK
-
