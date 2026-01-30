@@ -102,3 +102,6 @@ iOSInjectionProject/
 .vscode/
 *.sublime-project
 *.sublime-workspace
+
+# Local settings
+settings.local.json
