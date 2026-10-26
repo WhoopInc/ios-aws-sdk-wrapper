@@ -16,7 +16,7 @@ Add this package as a dependency in your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/WhoopInc/ios-aws-wrapper.git", from: "1.0.0")
+    .package(url: "https://github.com/WhoopInc/ios-aws-sdk-wrapper.git", from: "1.0.0")
 ]
 ```
 
@@ -26,7 +26,7 @@ Then add it to your target dependencies:
 .target(
     name: "YourTarget",
     dependencies: [
-        .product(name: "WhoopAWSWrapper", package: "ios-aws-wrapper")
+        .product(name: "WhoopAWSWrapper", package: "ios-aws-sdk-wrapper")
     ]
 )
 ```
