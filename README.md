@@ -43,3 +43,46 @@ The package exposes a public protocol `WhoopCognitoClientProtocol` with custom t
 - **Type Abstraction**: All AWS SDK types are encapsulated internally
 - **Custom HTTP Client**: Support for injecting custom `URLSession` instances
 - **Error Handling**: Proper error propagation from AWS SDK
+
+## Distribution
+
+The package ships to the iOS app as a pre-compiled `WhoopAWSWrapper.xcframework` attached to a GitHub release.
+
+### 1. Build the XCFramework
+
+From the repo root:
+
+```bash
+./scripts/build_xcframework.sh
+```
+
+This archives the framework for iOS device and iOS Simulator and combines them into `build/WhoopAWSWrapper.xcframework`. `build/` is deleted at the start of each run; set `OUTPUT_DIR` to write elsewhere.
+
+### 2. Zip it and compute the checksum
+
+```bash
+(cd build && zip -r WhoopAWSWrapper.xcframework.zip WhoopAWSWrapper.xcframework)
+swift package compute-checksum build/WhoopAWSWrapper.xcframework.zip
+```
+
+### 3. Publish a release
+
+Tag the release and attach the zip:
+
+```bash
+gh release create <version> build/WhoopAWSWrapper.xcframework.zip \
+    --title "<version>" \
+    --notes "Checksum: <checksum>"
+```
+
+### 4. Consume it
+
+Reference the release asset as a binary target:
+
+```swift
+.binaryTarget(
+    name: "WhoopAWSWrapper",
+    url: "https://github.com/WhoopInc/ios-aws-sdk-wrapper/releases/download/<version>/WhoopAWSWrapper.xcframework.zip",
+    checksum: "<checksum>"
+)
+```
