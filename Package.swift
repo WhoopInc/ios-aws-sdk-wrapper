@@ -22,6 +22,7 @@ let package = Package(
         .target(
             name: "WhoopAWSWrapper",
             dependencies: [
+                .product(name: "AWSClientRuntime", package: "aws-sdk-swift"),
                 .product(name: "AWSCognitoIdentityProvider", package: "aws-sdk-swift")
             ]
         ),
