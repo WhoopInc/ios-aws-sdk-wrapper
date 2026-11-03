@@ -34,7 +34,7 @@ struct WhoopCognitoErrorTests {
         let client = WhoopCognitoClient(awsClient: awsClient)
 
         await #expect(throws: NetworkError.self) {
-            try await client.getUser(input: WhoopAWSWrapper.GetUserInput(accessToken: "access"))
+            _ = try await client.getUser(input: WhoopAWSWrapper.GetUserInput(accessToken: "access"))
         }
     }
 }
